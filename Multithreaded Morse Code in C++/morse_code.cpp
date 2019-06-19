@@ -1,5 +1,5 @@
 #include "morse_code.h"
-Node* Btree::loadTree(Node*& root, std::string fileName) {
+Node* Btree::loadTree(Node*& btree, std::string fileName) {
 	Node* root = new Node;
 	root->character = ' ';
 	root->left = nullptr;
@@ -176,4 +176,14 @@ void Btree::translateToMorse(Node* currNode, std::string convertText, std::stack
 		}
 	}
 }
+std::string Btree::get_file() {
+	return fileName;
+}
+void Btree::runMultiThread(Node*& root, std::string fileName) {
+	std::thread t1(&Btree::loadTree,this,std::ref(root), fileName);
+	std::thread t2(&Btree::displayMenu,this, std::ref(root));
+	t1.join();
+	t2.join();
+}
+
 

@@ -23,6 +23,8 @@ public:
 	void displayMenu(Node*);
 	void translateFromMorse(Node*, std::string);
 	void translateToMorse(Node*, std::string, std::stack<char>, int);
+	void runMultiThread(Node*&, std::string);
+	std::string get_file();
 };
 
 #endif
